@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Post;
-use App\Http\Requests\PostRequest; 
+use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
+    
     public function index(Post $post)
     {
-        return view('posts/index')->with(['posts' => $post->Paginate()]);
-    }
+    return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+    } 
 
     public function show(Post $post)
     {
@@ -21,11 +22,10 @@ class PostController extends Controller
     {
         return view('posts/create');
     }
-
-    public function store(Post $post, PostRequest $request) 
+    public function store(Request $request, Post $post)
     {
-        $input = $request['post'];
-        $post->fill($input)->save();
-        return redirect('/posts/' . $post->id);
+    $input = $request['post'];
+    $post->fill($input)->save();
+    return redirect('/posts/' . $post->id);
     }
-}
+    }

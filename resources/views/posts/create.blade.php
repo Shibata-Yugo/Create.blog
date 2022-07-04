@@ -3,8 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title>Blog</title>
-      <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
     </head>
     <body>
         <h1>Blog Name</h1>
@@ -16,9 +14,9 @@
             </div>
             <div class="body">
                 <h2>Body</h2>
-                <textarea name="post[body]" placeholder="今日も1日お疲れさまでした。"></textarea>
+                <textarea name="post[body]" placeholder="山梨県　上野原市"></textarea>
             </div>
-            <input type="submit" value="保存"/>
+            <input type="submit" value="保存"/><div class="store">[<a href="/">store</a>]</div>
         </form>
         <div class="back">[<a href="/">back</a>]</div>
     </body>
