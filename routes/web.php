@@ -10,20 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
-
-Route::get('/', [PostController::class, 'index']);
+Route::get('/', 'PostController@index');
+Route::post('/posts', 'PostController@store');
 Route::get('/posts/create', 'PostController@create');
-Route::get('/posts/{post}', [PostController::class, 'show'])
-    ->name('posts.show');
-Route::get('/posts/create', [PostController::class, 'create'])
-    ->name('posts.create');
-Route::post('/posts/store', [PostController::class, 'store'])
-    ->name('posts.store');
+Route::get('/posts/{post}', 'PostController@show');
+Route::post('/posts/{post}', 'PostController@update');
+Route::delete('/posts/{post}', 'PostController@delete');
+Auth::routes();  
+Route::get('/posts/{post}/edit', 'PostController@edit');
+Route::put('/posts/{post}', 'PostController@update');
 
-Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/images', 'imageController@index');
-Route::get('/image/form', 'imageController@form');
-Route::post('/image/store', 'imageController@store');

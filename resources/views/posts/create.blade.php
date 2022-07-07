@@ -5,19 +5,25 @@
         <title>Blog</title>
     </head>
     <body>
-        <h1>Blog Name</h1>
-        <form method="post" action="{{ route('posts.store') }}">
+        <x-slot name="title">
+        Blog Name
+        </x-slot>
+        <form action="/posts" method="POST">
             @csrf
-            <div class="title">
-                <h2>Title</h2>
-                <input type="text" name="post[title]" placeholder="タイトル"/>
+            <h3> Title </h3>
+                    <input type="text" name="post[title]" placeholder="タイトル" value="{{ old('post.title') }}"/>
+                    <p class="title__error" style="color:red">{{ $errors->first('post.title') }}</p>
             </div>
-            <div class="body">
-                <h2>Body</h2>
-                <textarea name="post[body]" placeholder="山梨県　上野原市"></textarea>
+            
+               <h3>Body</h3>  
+                <textarea name="post[body]" placeholder="山梨県　上野原市">{{ old('post.body') }}</textarea>
+                 <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
             </div>
-            <input type="submit" value="保存"> <div [<a href="/">store</a>] </div>
-        </form>
-        <div class="back">[<a href="/">back</a>]</div>
-    </body>
-</html>
+                <input type="submit" value="保存"> 
+            </form>
+         <div class="back">[<a href="/">back</a>]</div>
+            <div class="category">
+     </body>
+        </div>
+    </html>
+  
