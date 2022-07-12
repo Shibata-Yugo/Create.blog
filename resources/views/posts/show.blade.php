@@ -9,6 +9,9 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
+          @extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+         @section('content')
         <h1 class="title">
             {{ $post->title }}
         </h1>
@@ -27,5 +30,6 @@
      </form>
         <div class="footer">
         </div>
+        @endsection
     </body>
 </html>

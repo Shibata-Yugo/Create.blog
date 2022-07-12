@@ -16,7 +16,7 @@ class CreateRoomsTable extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('name')->coment('部屋名');
+            $table->string('name',20)->coment('部屋名');
         });
     }
 
