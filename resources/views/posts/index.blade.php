@@ -8,10 +8,9 @@
     </head>
     <body>
         @extends('layouts.app')　　　　　　　　　　　　　　　　　　
-
         @section('content')
-        <h1>Blog Name</h1>
-         <a href='/posts/create'>create</a>
+        <h1>Blog Name</h1>  {{Auth::user()->name}}
+         <a href='/posts/create'> <h3>create</h3> </a>
          <div class='posts'>
           @foreach ($posts as $post)
                 <div class='post'>

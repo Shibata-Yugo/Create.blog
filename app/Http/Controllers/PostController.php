@@ -11,7 +11,7 @@ class PostController extends Controller
     public function index(Post $post)
     {
        
-    return view('posts/index')->with(['posts' => $post->getPaginateByLimit()]);
+    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
     } 
 
     public function show(Post $post)
@@ -27,15 +27,18 @@ class PostController extends Controller
     public function store(PostRequest $request, Post $post)
     {
     $input = $request['post'];
+    $input += ['user_id' => $request->user()->id];    //この行を追加
     $post->fill($input)->save();
-    return redirect('/posts/' . $post->id);
+    return redirect('/posts/'.$post->id);
     }
+
     
     public function delete(Post $post)
     {
     $post->delete();
     return redirect('/');
     }
+    
     public function edit(Post $post)
     {
     return view('posts/edit')->with(['post' => $post]);
@@ -44,8 +47,8 @@ class PostController extends Controller
     public function update(PostRequest $request, Post $post)
     {
     $input_post = $request['post'];
+    $input_post += ['user_id' => $request->user()->id]; 
     $post->fill($input_post)->save();
-
     return redirect('/posts/' . $post->id);
     }
 }
