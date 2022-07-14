@@ -11,9 +11,9 @@ class PostController extends Controller
     public function index(Post $post)
     {
        
-    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
-    } 
-
+    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(20)]);
+    }
+    
     public function show(Post $post)
     {
         return view('posts.show')->with(['post' => $post]);
@@ -27,7 +27,7 @@ class PostController extends Controller
     public function store(PostRequest $request, Post $post)
     {
     $input = $request['post'];
-    $input += ['user_id' => $request->user()->id];    //この行を追加
+    $input += ['user_id' => $request->user()->id];
     $post->fill($input)->save();
     return redirect('/posts/'.$post->id);
     }

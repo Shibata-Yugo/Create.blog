@@ -9,13 +9,14 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body>
-          @extends('layouts.app')　　　　　　　　　　　　　　　　　　
-
+          @extends('layouts.app')
+          
          @section('content')
         <h1 class="title">
             {{ $post->title }}
         </h1>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
+        <small>{{ $post->user->name }}</small>
         <div class="content">
             <div class="content__post">
                 <h3>本文</h3>
