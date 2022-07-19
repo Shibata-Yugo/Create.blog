@@ -16,13 +16,15 @@
             {{ $post->title }}
         </h1>
         <p class="edit">[<a href="/posts/{{ $post->id }}/edit">edit</a>]</p>
-        <small>{{ $post->user->name }}</small>
         <div class="content">
             <div class="content__post">
                 <h3>本文</h3>
                 <p>{{ $post->body }}</p>    
             </div>
             <a href="/">戻る</a>
+            <a href="">{{ $post->category->name }}</a>
+            <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
+            <small>{{ $post->user->name }}</small>
             </div>
          <form action="/posts/{{ $post->id }}" id="form_{{ $post->id }}" method="post" style="display:inline">
       @csrf
