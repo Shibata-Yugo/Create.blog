@@ -11,6 +11,7 @@
 |
 */
     Route::group(['middleware' => ['auth']], function(){
+    Route::get('posts/timeline', 'TimelineController@showTimelinePage');  
     Route::get('/', 'PostController@index');
     Route::get('/posts/create', 'PostController@create');
     Route::post('/posts', 'PostController@store');
@@ -18,10 +19,14 @@
     Route::post('/posts/{post}', 'PostController@update');
     Route::delete('/posts/{post}', 'PostController@delete');
     Route::get('/posts/{post}/edit', 'PostController@edit');
-    });
+    Route::get('/profile', 'UserController@show')->name('profile');
+    Route::put('/profile', 'UserController@profileUpdate')->name('profile_edit');
+    Route::put('/password_change', 'UserController@passwordUpdate')->name('password_edit');
+     });
     
     Route::put('/posts/{post}', 'PostController@update');
     Route::get('/user', 'UserController@index');
     Route::get('/categories/{category}', 'CategoryController@index');
     Auth::routes();  
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('timeline', 'TimelineController@postTweet');    
+    

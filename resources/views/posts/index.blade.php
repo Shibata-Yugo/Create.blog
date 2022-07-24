@@ -12,23 +12,22 @@
         
         @section('content')
         <h1>"上野原市-マチコミ"</h1>  
-        <p Class="cleate">[<a href='/posts/create'>create</a>]</p>
+        <p Class="timeline">[<a href='/posts/timeline'>"グループチャットに参加する"</a>]</p>
+        <p Class="create">[<a href='/posts/create'>ブログ作成</a>]</p>
+      
          <div class='posts'>
           @foreach ($posts as $post)
                 <div class='post'>
-                    
-                    <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
+                     <a href="/posts/{{ $post->id }}">{{ $post->title }}</a>
                      <a href="">{{ $post->category->name }}</a>
-                     <a href="/categories/{{ $post->category->id }}">{{ $post->category->name }}</a>
-                     <a href='/posts/create'> <h3>create</h3> </a>
                      <small>{{ $post->user->name }}</small>
                      <p>{{ $post->body }}</p>
-                     <p class='body'>{{ $post->body }}</p>
                 </div>
         @endforeach
         </div>
         <div class='paginate'>
             {{ $posts->links() }}
+            <a class="dropdown-item" href="{{route('profile')}}"><span class="text-primary">プロフィール編集</span></a>
         @endsection
     </body>
 </html>

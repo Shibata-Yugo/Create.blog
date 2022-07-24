@@ -42,7 +42,12 @@ class User extends Authenticatable
     {
     return $this->hasMany('App\Post');  
     }
-    
+
+
+    public function comments() //関数名は複数形がベスト
+    {
+    return $this->hasMany('App\Comment');
+     }
 
    public function getOwnPaginateByLimit(int $limit_count = 5)
     {

@@ -8,8 +8,7 @@
     </head>
     <body>
        @extends('layouts.app')
-
-        @section('content')
+       @section('content')
     
       <div class="own_posts">
         @foreach($own_posts as $post)
@@ -19,13 +18,10 @@
                  <p>{{ $post->body }}</p>
             </div>
         @endforeach
-   
-        <div class='paginate'>
+       <div class='paginate'>
             {{ $own_posts->links() }}
         </div>
     </div>
-
-@endsection
-
+        @endsection
     </body>
 </html>
