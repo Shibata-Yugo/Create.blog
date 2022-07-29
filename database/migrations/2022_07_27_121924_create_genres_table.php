@@ -14,7 +14,7 @@ class CreateGenresTable extends Migration
      public function up()
    {
        Schema::create('genres', function (Blueprint $table) {
-           $table->id(1);
+           $table->bigIncrements('id');
            $table->string('name');  // 追記
            $table->timestamps();
        });
@@ -27,6 +27,6 @@ class CreateGenresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Genre'); // これはGenreの表記でまちがえていないか
+        Schema::dropIfExists('genre'); // これはGenreの表記でまちがえていないか
     }
 }

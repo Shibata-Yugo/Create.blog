@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::group(['middleware' => ['auth']], function(){
+ Route::group(['middleware' => ['auth']], function(){
     Route::get('posts/timeline', 'TimelineController@showTimelinePage'); 
     Route::get('/posts/timeline/edit', 'TimelineController@edit');
     Route::get('/', 'PostController@index');
@@ -25,7 +25,10 @@
     Route::put('/profile', 'UserController@profileUpdate')->name('profile_edit');
     Route::put('/password_change', 'UserController@passwordUpdate')->name('password_edit');
     Route::delete('/posts/timeline', 'TimelineController@delete');
-     });
+    Route::get('question/{question}', [QuestionController::class, 'show'])->name('question.show');
+    Route::get('question/result/{question?}', [QuestionController::class, 'result'])->name('question.result');
+    Route::post('question', [QuestionController::class, 'store'])->name('question.store');
+ });
     
     Route::put('/posts/{post}', 'PostController@update');
     Route::get('/user', 'UserController@index');
@@ -45,10 +48,5 @@
     
     // 省略
 
-   Route::middleware('auth')->group(function() {
 
-    Route::get('question/{question}', [QuestionController::class, 'show'])->name('question.show');
-    Route::get('question/result/{question?}', [QuestionController::class, 'result'])->name('question.result');
-    Route::post('question', [QuestionController::class, 'store'])->name('question.store');
   //読み取らないっすね、、どうしますか、、。まず、この記載の仕方が問題なのかも。
-});
