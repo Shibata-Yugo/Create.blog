@@ -12,7 +12,7 @@ class TimelineController extends Controller
     {
         $tweets = Tweet::latest()->get();  
         logger($tweets);
-        return view('posts.timeline')->with(["tweets"=>$tweets]);
+        return view('posts.timeline')->with(["tweets"=>$tweets ]);
     }
 
     public function postTweet(Request $request)
@@ -25,5 +25,38 @@ class TimelineController extends Controller
             'tweet' => $request->tweet,
         ]);
         return redirect("posts/timeline");
+     }
+    
+      public function delete(Tweet $tweets)
+      {
+        $tweets->delete();
+         return redirect('/');
+      }
+    
+    public function edit(Tweet $tweets)
+    {
+    return view('posts.edittimeline')->with(["tweets"=>$tweets]);
     }
-}
+   
+    public function editname(Request $request, Tweet $tweets)
+    {
+    $input_post = ['user_id' => $request->user()->id]; 
+    $body=$request->input('text');
+    $tweets->fill($input_post);
+    return redirect('/posts/timeline' . $tweets->id);
+    }
+    
+  public function update(Request $request, Tweet $tweets)
+ {
+    $input_tweets = $request['Tweet'];
+    $Tweet->fill($input_twees)->save();
+    return redirect('/posts/timeline' . $tweets->id);
+ }
+ 
+ public function vote(Request $request, Tweet $tweets)
+ {
+    $input_tweets = $request['Tweet'];
+    $Tweet->fill($input_twees)->save();
+    return view('/posts/timelinevote' );
+ }
+} 

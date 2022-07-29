@@ -25,3 +25,8 @@
         @endsection
     </body>
 </html>
+
+<div class="video">
+<iframe width="640" height="360" src="https://www.youtube.com/embed/vBmiAdyRW0s" title="実は近いぞ上野原。男たちのアクティビティー編" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+</iframe>
+</div>

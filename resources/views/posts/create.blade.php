@@ -21,6 +21,7 @@
                <h3>Body</h3>  
                 <textarea name="post[body]" placeholder="山梨県　上野原市">{{ old('post.body') }}</textarea>
                  <p class="body__error" style="color:red">{{ $errors->first('post.body') }}</p>
+                 <input id="image" type="file" name="image">
             </div>
             <div class="category">
              <h2>Category</h2>

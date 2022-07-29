@@ -12,7 +12,7 @@ class PostController extends Controller
     public function index(Post $post)
     {
        
-    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(10)]);
+    return view('posts/index')->with(['posts' => $post->getPaginateByLimit(5)]);
     }
     
     public function show(Post $post)
@@ -32,6 +32,21 @@ class PostController extends Controller
     $input += ['user_id' => $request->user()->id];
     $post->fill($input)->save();
     return redirect('/posts/'.$post->id);
+     
+     $inputs=request()->validate([
+            'title'=>'required|max:255',
+            'body'=>'required|max:255',
+            'image'=>'image'
+        ]);
+ 
+        // 画像ファイルの保存場所指定
+        if(request('image')){
+            $filename=request()->file('image')->getClientOriginalName();
+            $inputs['image']=request('image')->storeAs('public/images', $filename);
+        }
+ 
+        // postを保存
+        $post->create($inputs);
     }
 
     
@@ -52,5 +67,10 @@ class PostController extends Controller
     $input_post += ['user_id' => $request->user()->id]; 
     $post->fill($input_post)->save();
     return redirect('/posts/' . $post->id);
+    }
+    
+    public function uenohara(Post $post)
+    {
+        return view ('posts.uenohara');
     }
 }

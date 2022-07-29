@@ -70,4 +70,9 @@ class UserController extends Controller
 
         return redirect()->route('articles_index')->with('msg_success', 'パスワードの更新が完了しました');
     }
+    public function delete(Tweet $tweets)
+    {
+    $tweets->delete();
+    return redirect('/');
+    }
 }
