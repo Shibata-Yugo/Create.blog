@@ -14,7 +14,7 @@ class CreateQuestionItemsTable extends Migration
     public function up()
     {
     Schema::create('question_items', function (Blueprint $table) {
-        $table->id();
+        $table->bigIncrements("id");
         $table->unsignedBigInteger('question_id')->comment('質問ID');
         $table->string('option')->comment('選択肢');
         $table->timestamps();

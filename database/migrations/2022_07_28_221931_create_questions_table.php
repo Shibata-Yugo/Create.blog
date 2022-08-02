@@ -14,7 +14,7 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
     Schema::create('questions', function (Blueprint $table) {
-        $table->id();
+        $table->bigIncrements("id");
         $table->string('title')->comment('タイトル');
         $table->dateTime('expired_at')->comment('有効期限');
         $table->timestamps();
